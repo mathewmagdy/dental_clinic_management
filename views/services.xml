@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_dental_service_form" model="ir.ui.view">
+      <field name="name">dental.services.form</field>
+      <field name="model">dental.services</field>
+      <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                        <field name="ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="service_name"/>
+                        <field name="department_id" options="{'no_open':True ,'no_create':True}" />
+                        <field name="price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_dental_service_tree" model="ir.ui.view">
+      <field name="name">dental.services.tree</field>
+      <field name="model">dental.services</field>
+      <field name="arch" type="xml">
+            <tree>
+                <field name="ref"/>
+                <field name="service_name"/>
+                <field name="department_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_dental_services_search" model="ir.ui.view">
+      <field name="name">dental.services.search</field>
+      <field name="model">dental.services</field>
+      <field name="arch" type="xml">
+            <search>
+                <field name="service_name" filter_domain="['|',('service_name','ilike',self),('ref','ilike',self)]"/>
+                <field name="department_id" filter_domain="['|',('department_id.department_name','ilike',self),('ref','ilike',self)]"/>
+             </search>
+        </field>
+    </record>
+
+    <record id="action_dental_services" model="ir.actions.act_window">
+       <field name="name">Services</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">dental.services</field>
+       <field name="view_mode">tree,form</field>
+       <field name="search_view_id" ref="dental.view_dental_services_search"/>
+    </record>
+
+      <menuitem
+        id="menu_dental_services"
+        parent="operation"
+        name="Services"
+        action="action_dental_services"
+    />
+
+
+</odoo>

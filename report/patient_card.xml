@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_patient">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <img src="/dental/static/img/mm.png" style="width: 100px; height: auto;"/>
+                <h2>Patient Card</h2>
+                <table class="table table-sm o_main_table table-borderless mt-4">
+                    <thead>
+                        <tr>
+                            <th class="text-start">Patient Name</th>
+                            <th class="text-end">Gender</th>
+                            <th class="text-end">Age</th>
+                            <th class="text-end">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="line">
+                            <tr class="bg-200 fw-bold o_line_section">
+                                <td><span t-field="line.name"/></td>
+                                <td class="text-end"><span t-field="line.gender"/></td>
+                                <td class="text-end"><span t-field="line.age"/></td>
+                                <td class="text-end"><span t-field="line.phone"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

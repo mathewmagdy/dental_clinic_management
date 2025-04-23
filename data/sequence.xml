@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sequence_dental_patient" model="ir.sequence">
+            <field name="name">dental patient sequence</field>
+            <field name="code">dental.patient</field>
+            <field name="prefix">PN</field>
+            <field name="padding">4</field>
+
+        </record>
+
+       
+        <record id="sequence_dental_department" model="ir.sequence">
+            <field name="name">dental department sequence</field>
+            <field name="code">dental.department</field>
+            <field name="prefix">DN</field>
+            <field name="padding">2</field>
+
+        </record>
+
+        <record id="sequence_dental_service" model="ir.sequence">
+            <field name="name">dental service sequence</field>
+            <field name="code">dental.services</field>
+            <field name="prefix">SN</field>
+            <field name="padding">2</field>
+
+        </record>
+
+        <record id="sequence_dental_appointment" model="ir.sequence">
+            <field name="name">dental appointment sequence</field>
+            <field name="code">dental.dappointment</field>
+            <field name="prefix">AN</field>
+            <field name="padding">5</field>
+
+        </record>
+        
+    
+    </data>
+
+
+
+</odoo>

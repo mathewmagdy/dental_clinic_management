@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_mousa_department_form" model="ir.ui.view">
+      <field name="name">dental.department.form</field>
+      <field name="model">dental.department</field>
+      <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                        <field name="ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="department_name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_dental_department_tree" model="ir.ui.view">
+      <field name="name">dental.department.tree</field>
+      <field name="model">dental.department</field>
+      <field name="arch" type="xml">
+            <tree>
+                <field name="ref"/>
+                <field name="department_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_dental_department_search" model="ir.ui.view">
+      <field name="name">dental.department.search</field>
+      <field name="model">dental.department</field>
+      <field name="arch" type="xml">
+            <search>
+                <field name="department_name" filter_domain="['|',('department_name','ilike',self),('ref','ilike',self)]"/>
+             </search>
+        </field>
+    </record>
+
+    <record id="action_dental_department" model="ir.actions.act_window">
+       <field name="name">Department</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">dental.department</field>
+       <field name="view_mode">tree,form</field>
+       <field name="search_view_id" ref="dental.view_dental_department_search"/>
+    </record>
+
+      <menuitem
+        id="menu_dental_patient"
+        parent="operation"
+        name="department"
+        action="action_dental_department"
+    />
+
+
+</odoo>

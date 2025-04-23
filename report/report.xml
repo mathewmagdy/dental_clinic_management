@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report id="report_patient_card" 
+    string="Patient Card" 
+    model="dental.patient" 
+    report_type="qweb-pdf" 
+    name="dental.report_patient" 
+    file="dental.report_patient"/>
+
+    <report id="report_service_card" 
+    string="Service Card" 
+    model="dental.services" 
+    report_type="qweb-pdf" 
+    name="dental.report_service" 
+    file="dental.report_service"/>
+
+    <report id="report_dappointment_card" 
+    string="Appointment Card" 
+    model="dental.dappointment" 
+    report_type="qweb-pdf" 
+    name="dental.report_dappointment" 
+    file="dental.report_dappointment"/>
+</odoo>

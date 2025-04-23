@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+dental.access_dental_patient,access_dental_patient,dental.model_dental_patient,base.group_user,1,1,1,1
+dental.access_dental_department,access_dental_department,dental.model_dental_department,base.group_user,1,1,1,1
+dental.access_dental_services,access_dental_services,dental.model_dental_services,base.group_user,1,1,1,1
+dental.access_dental_dappointment,access_dental_dappointment,dental.model_dental_dappointment,base.group_user,1,1,1,1
+dental.access_dental_exam,access_dental_exam,dental.model_dental_exam,base.group_user,1,1,1,1

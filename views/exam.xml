@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <record id="view_exam_form" model="ir.ui.view">
+            <field name="name">dental.exam.form</field>
+            <field name="model">dental.exam</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="patient_id" domain="[('id', '=', patient_id)]"/> 
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                        <field name="service"/>
+                        <field name="total"/>
+                        <button name="action_create_invoice" type="object" string="Pay"/>
+
+                    </group>
+                    <field name="patient_id" invisible="1"/> 
+                </form>
+            </field>
+        </record>
+
+        <record id="view_dental_exam_tree" model="ir.ui.view">
+            <field name="name">dental.exam.tree</field>
+            <field name="model">dental.exam</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="patient_id"/>
+                    <field name="date"/>
+                    <field name="total"/>
+                </tree>
+            </field>
+        </record>
+
+    <record id="view_dental_exam_search" model="ir.ui.view">
+        <field name="name">dental.exam.search</field>
+        <field name="model">dental.exam</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="patient_id"/>
+                <field name="date"/>
+                <field name="total"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_dental_exam" model="ir.actions.act_window">
+        <field name="name">Exam</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dental.exam</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="dental.view_dental_exam_search"/>
+    </record>
+
+        <menuitem
+        id="menu_dental_exam"
+        parent="operation"
+        name="examination"
+        action="action_dental_exam"
+    />
+
+    </data>
+</odoo>

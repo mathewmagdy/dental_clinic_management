@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_dental_dappointment_form" model="ir.ui.view">
+        <field name="name">dental.dappointment.form</field>
+        <field name="model">dental.dappointment</field>
+        <field name="arch" type="xml">
+    
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"/>
+                        </h1>
+
+                    </div>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="appointment_date"/>
+                        <button name="send_whatsapp_msg" string="Message" type="object" icon="fa-whatsapp"/>
+
+                    </group>
+                    
+                </sheet>
+                <!-- Chatter -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+            </form>
+        </field>
+    </record>
+
+     <record id="view_dental_adppointment_tree" model="ir.ui.view">
+        <field name="name">dental.dappointmentt.tree</field>
+        <field name="model">dental.dappointment</field>
+        <field name="arch" type="xml">
+           <tree>
+                <field name="appointment_date"/>
+                <field name="patient_id"/>
+                <field name="state" optional="show" widget="badge" decoration-primary="state == 'confirmed'" decoration-success="state == 'done'" decoration-danger="state == 'cancelled'" decoration-warning="state == 'draft'"/>
+                <button name="action_confirm" string="Confirme" type="object"/>
+                <button name="action_done" string="Done" type="object"/>
+                <button name="action_cancel" string="Cancel" type="object"/>
+                <button name="action_create_exam" string="Create Exam" type="object"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="view_dental_dappointment_search" model="ir.ui.view">
+        <field name="name">dental.dappointment.search</field>
+        <field name="model">dental.dappointment</field>
+        <field name="arch" type="xml">
+            <search>
+               <field name="state"/>
+                <filter string="confirmed" name='filter_confirmed' domain="[('state','=','confirmed')]"/>
+                <filter string="cancelled" name='filter_cancelled' domain="[('state','=','cancelled')]"/>
+                <filter string="draft" name='filter_draft' domain="[('state','=','draft')]"/>
+                <!-- <field name="ref"/> -->
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_dental_dappointment" model="ir.actions.act_window">
+        <field name="name">dappointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dental.dappointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="dental.view_dental_dappointment_search"/>
+
+    </record>
+
+    <menuitem
+        id="menu_dental_deappointment"
+        parent="operation"
+        name="Appointment"
+        action="action_dental_dappointment"
+    />
+
+</odoo>

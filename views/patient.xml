@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_dental_patient_form" model="ir.ui.view">
+        <field name="name">dental.patient.form</field>
+        <field name="model">dental.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ref" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_of_birth"/>
+                        <field name="age"/>
+                        <field name="is_chield"/>
+                        <field name="gender"/>
+                        <field name="phone"/>
+                        <field name="notes"/>
+                    </group>
+                    <notebook>
+                        <page string="Medical History"> 
+                            <form>
+                                <group>
+                                    <field name="q1"/>
+                                    <field name="q2"/>
+                                    <field name="q3"/>
+                                    <field name="q4"/>
+                                    <field name="q5"/>
+                                    <field name="q6"/>
+                                    <field name="q7"/>
+                                    <field name="q8"/>
+                                </group>
+                            </form>
+                        </page>
+                    </notebook>
+                    
+                </sheet>
+               
+                <!-- Chatter -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+            </form>
+        </field>
+    </record>
+
+     <record id="view_dental_patient_tree" model="ir.ui.view">
+        <field name="name">dental.patient.tree</field>
+        <field name="model">dental.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="ref"/>
+                <button name="action_share_whatsapp" string="Message" type="object" icon="fa-whatsapp"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_dental_patient_search" model="ir.ui.view">
+        <field name="name">dental.patient.search</field>
+        <field name="model">dental.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="['|' ,('name','ilike',self),('ref','ilike',self)]"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <filter string="Male" name='filter_male' domain="[('gender','=','male')]"/>
+                <filter string="Female" name='filter_femmale' domain="[('gender','=','female')]"/>
+                <filter string="Other" name='filter_other' domain="[('gender','=','other')]"/>
+                <filter string="is_chield" name='is_chield' domain="[('is_chield','=','True')]"/>
+                <!-- <field name="ref"/> -->
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_dental_patient" model="ir.actions.act_window">
+        <field name="name">patient</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dental.patient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="dental.view_dental_patient_search"/>
+
+    </record>
+
+    <menuitem
+        id="menu_dental_department"
+        parent="operation"
+        name="patients"
+        action="action_dental_patient"
+    />
+
+</odoo>

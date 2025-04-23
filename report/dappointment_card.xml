@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_dappointment">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <img src="/dental/static/img/mm.png" style="width: 100px; height: auto;"/>
+                <h2>Appointment Card</h2>               
+                <table class="table table-sm o_main_table table-borderless mt-4">
+                    <thead>
+                        <tr>
+                            <th class="text-start">Appointment Reference</th>
+                            <th class="text-end">Patient</th>
+                            <th class="text-end">Appointment Date</th>
+                            <th class="text-end">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="line">
+                            <tr class="bg-200 fw-bold o_line_section">
+                                <td><span t-field="line.ref"/></td>
+                                <td class="text-end"><span t-field="line.patient_id"/></td>
+                                <td class="text-end"><span t-field="line.appointment_date"/></td>
+                                <td class="text-end"><span t-field="line.state"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>
